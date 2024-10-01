@@ -1,21 +1,24 @@
 import "dart:io";
+
+
 void main() {
-  int rows = 4; 
-  List<int> fib = [1, 1];
+  print("enter rows");
+  int rows=int.parse(stdin.readLineSync()!);
+  int a = 1, b = 1;
 
- 
-  for (int i = 2; i < 10; i++) {
-    fib.add(fib[i - 1] + fib[i - 2]);
-  }
-
-  int index = 0; 
-
-  for (int i = 1; i <= rows; i++) {
-    for (int j = 0; j < i; j++) {
-      stdout.write("${fib[index]} ");
-      index++;
+  for (int i = 0; i < rows; i++) {
+    List<int> currentRow = [];
+    
+    for (int j = 0; j <= i; j++) {
+      currentRow.add(a);
+      // Update the next number in the sequence
+      int next = a + b;
+      a = b;
+      b = next;
     }
-    print(""); 
+    
+    // Print the current row
+    print(currentRow.join(' '));
   }
 }
 
